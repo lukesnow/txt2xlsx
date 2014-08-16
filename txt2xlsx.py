@@ -36,6 +36,7 @@ def main(input_file, output_file):
   ws=wb.active
   ws.title = os.path.basename(input_file)
 
+  # Initialize row counter.
   row_idx=1
 
   # Each row in the text file, write all values on the row to the XLSX file.
@@ -43,6 +44,8 @@ def main(input_file, output_file):
     # First, check if row is blank.  If so, write an empty.
     if not rows:
       ws.cell(row=row_idx, column=1).value = ""
+    # Next, write non-blanks to excel.
+    # Write numbers to xlsx file where possible.
     else:
       for col_idx in range(1, len(rows[0].split())+1):
         input_str = rows[0].split()[col_idx-1]
